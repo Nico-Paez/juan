@@ -31,7 +31,7 @@ services:
       - "15672:15672"
 
   zipkin:
-    image: ghcr.io/openzipkin/zipkin-slim:${TAG:-latest}
+    image: openzipkin/zipkin
     container_name: zipkin
     environment:
       - STORAGE_TYPE=mem
