@@ -1,6 +1,6 @@
 package com.parcial.catalogservice.services;
 
-import com.parcial.catalogservice.model.Movie;
+import com.parcial.catalogservice.models.Movie;
 import com.parcial.catalogservice.repositories.MovieRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

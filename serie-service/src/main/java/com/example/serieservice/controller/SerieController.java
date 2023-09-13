@@ -42,6 +42,6 @@ public class SerieController {
     public String create(@RequestBody Serie serie) {
         sender.send(serie);
         serieService.create(serie);
-        return serie.getId();
+        return "Creando serie";
     }
 }

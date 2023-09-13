@@ -1,5 +1,15 @@
 server:
   port: ${PORT:${SERVER_PORT:0}}
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/
+
+
 spring:
   application:
     name: movie-service
@@ -17,20 +27,6 @@ spring:
     password: guest
     host: localhost
     port: 5672
-
-  #micrometer (creo que esta bien, habria que probarlo, se ejecuta en el puerto 9411 por defecto)
-  metrics:
-    export:
-      prometheus:
-        enabled: false
-
-    instrumentation:
-      rabbitmq:
-        enabled: true
-
-    opentracing:
-      enabled: true
-  #micrometer
 
   #esto por si no entendes es para deshabilitar la dependencia de configuracion centralizada en github, tambien lo agregue en los demas yml para q no salte el error
   cloud:

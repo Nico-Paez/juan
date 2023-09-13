@@ -1,6 +1,6 @@
 package com.parcial.catalogservice.client;
 
-import com.parcial.catalogservice.model.Movie;
+import com.parcial.catalogservice.model.MovieRecord;
 import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +16,8 @@ import java.util.List;
 public interface IMovieClient {
 
     @GetMapping("/api/v1/movies/{genre}")
-    ResponseEntity<List<Movie>> getMovieByGenre(@PathVariable String genre);
+    ResponseEntity<List<MovieRecord>> getMovieByGenre(@PathVariable String genre);
 
     @PostMapping("/api/v1/movies/save")
-    ResponseEntity<Movie> saveMovie(@RequestBody Movie movie);
+    ResponseEntity<MovieRecord> saveMovie(@RequestBody MovieRecord movie);
 }

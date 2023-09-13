@@ -1,9 +1,7 @@
 package com.parcial.catalogservice.queue;
 
-import com.parcial.catalogservice.model.Movie;
-import com.parcial.catalogservice.model.Serie;
-import com.parcial.catalogservice.repositories.MovieRepository;
-import com.parcial.catalogservice.repositories.SerieRepository;
+import com.parcial.catalogservice.models.Movie;
+import com.parcial.catalogservice.models.Serie;
 import com.parcial.catalogservice.services.MovieService;
 import com.parcial.catalogservice.services.SerieService;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
