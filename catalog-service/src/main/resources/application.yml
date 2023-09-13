@@ -1,0 +1,44 @@
+server:
+  port: 0
+
+de:
+  flapdoodle:
+    mongodb:
+      embedded:
+        version: 5.0.5
+
+spring:
+  application:
+    name: catalog-service
+  rabbitmq:
+    username: guest
+    password: guest
+    host: localhost
+    port: 5672
+  data:
+    mongodb:
+      database: catalog
+      port: 27019
+  cloud:
+    config:
+      enabled: false
+
+queue:
+  movie:
+    name: MovieQueue
+  serie:
+    name: SerieQueue
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    registry-fetch-interval-seconds: 5
+    healthcheck:
+      enabled: true
+    service-url:
+      default-zone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 10

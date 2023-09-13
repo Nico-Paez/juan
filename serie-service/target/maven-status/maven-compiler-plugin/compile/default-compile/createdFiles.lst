@@ -1,0 +1,7 @@
+com\example\serieservice\model\Serie$Season$Chapter.class
+com\example\serieservice\model\Serie$Season.class
+com\example\serieservice\service\SerieService.class
+com\example\serieservice\model\Serie.class
+com\example\serieservice\repository\SerieRepository.class
+com\example\serieservice\controller\SerieController.class
+com\example\serieservice\SerieServiceApplication.class
