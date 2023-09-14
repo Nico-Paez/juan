@@ -28,8 +28,11 @@ public class SerieService {
         return repository.findAllByGenre(genre);
     }
 
-    public String create(Serie serie) {
+    public String create(Serie serie, Boolean throwError) {
+        if(throwError)
+            throw new RuntimeException();
+
         repository.save(serie);
-        return serie.getId();
+        return "Guardando nueva serie.";
     }
 }

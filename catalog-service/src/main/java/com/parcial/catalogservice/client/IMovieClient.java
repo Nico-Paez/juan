@@ -12,9 +12,6 @@ import java.util.List;
 @LoadBalancerClient(name = "movie-service", configuration = FeignConfiguration.class)
 public interface IMovieClient {
 
-    @GetMapping("/api/v1/movies/{genre}")
-    ResponseEntity<List<MovieRecord>> getMovieByGenre(@PathVariable String genre);
-
     @PostMapping("/api/v1/movies/save")
-    ResponseEntity<MovieRecord> saveMovie(@RequestBody MovieRecord movie, @RequestParam Boolean throwError);
+    String saveMovie(@RequestBody MovieRecord movie, @RequestParam Boolean throwError);
 }

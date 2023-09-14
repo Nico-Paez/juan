@@ -39,9 +39,9 @@ public class SerieController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public String create(@RequestBody Serie serie) {
+    public String create(@RequestBody Serie serie, @RequestParam (defaultValue = "true") Boolean throwError ){
         sender.send(serie);
-        serieService.create(serie);
-        return "Creando serie";
+        return serieService.create(serie,throwError);
+
     }
 }

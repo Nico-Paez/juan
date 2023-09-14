@@ -33,14 +33,14 @@ public class MovieService {
 
     @CircuitBreaker(name = "movie", fallbackMethod = "movieSaveFallback")
     @Retry(name = "movie")
-    public ResponseEntity<MovieRecord> saveMovie (MovieRecord movie){
+    public String saveMovie (MovieRecord movie){
         log.info("llamando metodo save de movie");
 
-        return repositoryClient.saveMovie(movie,true);
+        return repositoryClient.saveMovie(movie,false);
     }
 
-    private Object movieSaveFallback(CallNotPermittedException exception) {
-        return "El microservicio movie está caído.";
+    private String movieSaveFallback(CallNotPermittedException exception) {
+        return "Microservicio Movie no disponible.";
     }
 
 

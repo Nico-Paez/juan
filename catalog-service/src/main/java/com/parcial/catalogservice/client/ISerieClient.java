@@ -13,13 +13,7 @@ import java.util.List;
 @LoadBalancerClient(name = "serie-service", configuration = FeignConfiguration.class)
 public interface ISerieClient {
 
-    @GetMapping("/api/v1/series")
-    ResponseEntity<List<SerieRecord>> getAll();
-
-    @GetMapping("/api/v1/series/{genre}")
-    ResponseEntity<List<SerieRecord>> getSerieByGenre(@PathVariable String genre);
-
     @PostMapping("/api/v1/series")
     @ResponseStatus(HttpStatus.CREATED)
-    String create(@RequestBody SerieRecord serie);
+    String create(@RequestBody SerieRecord serie, @RequestParam Boolean throwError);
 }

@@ -38,7 +38,7 @@ public class CatalogController {
     }
 
     @PostMapping("/catalog/save")
-    ResponseEntity<MovieRecord> saveMovie(@RequestBody MovieRecord movie) {
+    String saveMovie(@RequestBody MovieRecord movie) {
         return movieService.saveMovie(movie);
     }
 
@@ -59,6 +59,6 @@ public class CatalogController {
 
     @PostMapping("/catalog/serie/save")
     public String saveSerie(@RequestBody SerieRecord serie) {
-        return iSerieClient.create(serie);
+        return serieService.saveSerie(serie);
     }
 }

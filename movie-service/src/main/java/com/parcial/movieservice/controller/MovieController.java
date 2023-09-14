@@ -26,8 +26,8 @@ public class MovieController {
     }
 
     @PostMapping("/save")
-    ResponseEntity<Movie> saveMovie(@RequestBody Movie movie, @RequestParam (defaultValue = "true") Boolean throwError) {
+    String saveMovie(@RequestBody Movie movie, @RequestParam (defaultValue = "true") Boolean throwError) {
         sender.send(movie);
-        return ResponseEntity.ok().body(movieService.save(movie, throwError));
+        return movieService.save(movie, throwError);
     }
 }

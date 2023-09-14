@@ -24,10 +24,11 @@ public class MovieService {
         return movieRepository.findByGenre(genre);
     }
 
-    public Movie save(Movie movie, Boolean throwError) {
+    public String save(Movie movie, Boolean throwError) {
         if (throwError)
             throw new RuntimeException();
 
-        return movieRepository.save(movie);
+        movieRepository.save(movie);
+        return "Subiendo nueva pelicula.";
     }
 }
