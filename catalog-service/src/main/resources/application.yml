@@ -50,38 +50,47 @@ eureka:
     lease-expiration-duration-in-seconds: 10
 
 resilience4j:
-  circuitbraker:
+  circuitbreaker:
     instances:
-      movie:
-        slidingWindowType: COUNT-BASED
+      findAll:
+        #        slidingWindowType: COUNT_BASED
+        #        slidingWindowSize: 5
+        #        failureRateThreshold: 50
+        #        waitDurationInOpenState: 15000
+        #        permittedNumberOfCallsInHalfOpenState: 3
+        #        registerHealthIndicator: true
+        #        allowHealthIndicatorToFail: false
+        #        automaticTransitionFromOpenToHalfOpenEnabled: true
+
+        slidingWindowType: COUNT_BASED
         slidingWindowSize: 5
         failureRateThreshold: 50
+        #        tiempo de espera en milisegundos en estado abierto
         waitDurationInOpenState: 15000
+        #        para ver si el servicio se recuperó, le voy a decir, esperá 3 llamadas para poder decir, pasalo a estado cerrado
         permittedNumberOfCallsInHalfOpenState: 3
+        #        vamos a definir que hacemos con el estado del servicio cuando se abrio
+        #        esto esa para ver la informacion del servicio en actuator
         registerHealthIndicator: true
-        allowHealthIndicatorToFail: false
-        automaticTransitionFromOpenToHalfOpenEnabled: true
-      serie:
-        slidingWindowType: COUNT-BASED
-        slidingWindowSize: 5
-        failureRateThreshold: 50
-        waitDurationInOpenState: 15000
-        permittedNumberOfCallsInHalfOpenState: 3
-        registerHealthIndicator: true
+        #        aca le decimos marca el servicio como down q no lo pueda ver nadie, esta en false porque tenemos q ver
+        #         como pasamos el serv a up
         allowHealthIndicatorToFail: false
         automaticTransitionFromOpenToHalfOpenEnabled: true
 
+  #     HASTA ACA ESTA TERMINADO EL EJERCICIO (este q vamos a ver es otro módulo de resilience4j)
+  #  Lo que vemos en el retry es cuanto tiempo queremos esperar entre cada uno de los reintentos
   retry:
     instances:
-      movie:
-        waitDuration: 1000
-        maxAttempts: 3
-        retryExceptions:
-          - feign.FeignException$InternalServerError
-      serie:
-        waitDuration: 1000
-        maxAttempts: 3
-        retryExceptions:
-          - feign.FeignException$InternalServerError
+      findAll:
+        #        waitDuration: 1000
+        #        maxAttempts: 3
+        #        retryExceptions:
+        #          - feign.FeignException$InternalServerError
 
+        waitDuration: 1000
+        #        Le decimos la cantidad de reintentos que queremos hacer
+        maxAttempts: 3
+        #        y la excepción contra la q queremos reintentar
+        retryExceptions:
+          - feign.FeignException$InternalServerError
 

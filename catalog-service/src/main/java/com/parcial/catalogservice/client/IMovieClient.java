@@ -4,10 +4,7 @@ import com.parcial.catalogservice.model.MovieRecord;
 import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,5 +16,5 @@ public interface IMovieClient {
     ResponseEntity<List<MovieRecord>> getMovieByGenre(@PathVariable String genre);
 
     @PostMapping("/api/v1/movies/save")
-    ResponseEntity<MovieRecord> saveMovie(@RequestBody MovieRecord movie);
+    ResponseEntity<MovieRecord> saveMovie(@RequestBody MovieRecord movie, @RequestParam Boolean throwError);
 }
