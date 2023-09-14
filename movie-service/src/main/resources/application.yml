@@ -1,51 +1,5 @@
-server:
-  port: ${PORT:${SERVER_PORT:0}}
-
-management:
-  tracing:
-    sampling:
-      probability: 1.0
-
-
 spring:
   application:
     name: movie-service
-  datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3370/movie-dev
-    username: usr-movie
-    password: pwd-movie
-  jpa:
-    hibernate.ddl-auto: update
-    generate-ddl: true
-    show-sql: true
-  rabbitmq:
-    username: guest
-    password: guest
-    host: localhost
-    port: 5672
-
-  #esto por si no entendes es para deshabilitar la dependencia de configuracion centralizada en github, tambien lo agregue en los demas yml para q no salte el error
-  cloud:
-    config:
-      enabled: false
-  #hasta aca
-
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    registry-fetch-interval-seconds: 5
-    healthcheck:
-      enabled: true
-    service-url:
-      default-zone: http://localhost:8761/eureka
-  instance:
-    prefer-ip-address: true
-    lease-renewal-interval-in-seconds: 5
-    lease-expiration-duration-in-seconds: 10
-
-queue:
-  movie:
-    name: MovieQueue
-
+  config:
+    import: optional:configserver:http://localhost:8888
